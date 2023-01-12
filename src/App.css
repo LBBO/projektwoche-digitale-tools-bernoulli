@@ -6,4 +6,18 @@
   box-shadow: 5px 5px 23px 0 rgba(0, 0, 0, 0.7);
   -webkit-box-shadow: 5px 5px 23px 0 rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 5px 5px 23px 0 rgba(0, 0, 0, 0.7);
+  display: grid;
+  grid-template-areas: 'coin options';
+  grid-template-columns: 1fr 1fr;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
 }
