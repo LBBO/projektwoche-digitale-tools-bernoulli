@@ -2,6 +2,7 @@
   "name": "projektwoche-digitale-tools-bernoulli",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lbbo.github.io/projektwoche-digitale-tools-bernoulli/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
