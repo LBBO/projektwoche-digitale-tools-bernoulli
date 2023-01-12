@@ -5,6 +5,15 @@ import { useNumberInput } from './UseNumberInput'
 import { Bar, Pie } from 'react-chartjs-2'
 import { ChartData } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import {
+  Button,
+  ButtonGroup,
+  Checkbox,
+  createStyles,
+  FormControlLabel,
+  FormGroup,
+  Stack,
+} from '@mui/material'
 
 const initialCounts: Record<CoinSide, number> = {
   [CoinSide.Tails]: 0,
@@ -76,25 +85,36 @@ function App() {
       {/*  <Coin side={CoinSide.Tails} spinning={forceFair} />*/}
       {/*</div>*/}
       <div className="options">
-        <label>
-          {probabilityInput}
-          Wahrscheinlichkeit Kopf
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={forceFair}
-            onChange={() => setForceFair(!forceFair)}
-          />
-          Fair
-        </label>
-        <div className="buttons">
-          <button onClick={spinTimesFactory(1)}>1x</button>
-          <button onClick={spinTimesFactory(10)}>10x</button>
-          <button onClick={spinTimesFactory(100)}>100x</button>
-          <button onClick={spinTimesFactory(1000)}>1000x</button>
-          <button onClick={clearCounts}>Reset</button>
-        </div>
+        <FormGroup>
+          <Stack gap={'1em'}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={forceFair}
+                  onChange={() => setForceFair(!forceFair)}
+                />
+              }
+              label={'Fair erzwingen'}
+            />
+            <FormControlLabel
+              control={probabilityInput}
+              label={'Wahrscheinlichkeit Kopf'}
+              style={createStyles({
+                marginLeft: 'none',
+              })}
+              id={'why-margin'}
+            />
+            <ButtonGroup className="buttons" variant={'outlined'}>
+              <Button onClick={spinTimesFactory(1)}>1x</Button>
+              <Button onClick={spinTimesFactory(10)}>10x</Button>
+              <Button onClick={spinTimesFactory(100)}>100x</Button>
+              <Button onClick={spinTimesFactory(1000)}>1000x</Button>
+              <Button onClick={clearCounts} color={'error'}>
+                Reset
+              </Button>
+            </ButtonGroup>
+          </Stack>
+        </FormGroup>
       </div>
       <div className="data">
         <Bar

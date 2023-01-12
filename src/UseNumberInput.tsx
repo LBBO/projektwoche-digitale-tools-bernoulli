@@ -1,16 +1,21 @@
-import React, { HTMLProps, useState } from 'react'
+import React, { useState } from 'react'
+import { createStyles, InputProps, OutlinedInput } from '@mui/material'
 
 export const useNumberInput = (
   defaultValue: number,
-  inputProps: HTMLProps<HTMLInputElement> = {},
+  inputProps: InputProps = {},
 ) => {
   const [numberValue, setNumberValue] = useState(defaultValue)
   const [value, setValue] = useState(numberValue.toString())
   const component = (
-    <input
+    <OutlinedInput
       {...inputProps}
       type={'number'}
+      size={'small'}
       value={value}
+      style={createStyles({
+        marginRight: '0.5em',
+      })}
       onChange={(e) => {
         setValue(e.target.value)
         const parsed = parseFloat(e.target.value)
@@ -20,5 +25,5 @@ export const useNumberInput = (
       }}
     />
   )
-  return [numberValue, component]
+  return [numberValue, component] as const
 }

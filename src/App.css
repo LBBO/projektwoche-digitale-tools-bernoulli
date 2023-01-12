@@ -11,13 +11,6 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
+#why-margin {
+  margin-left: 0;
 }

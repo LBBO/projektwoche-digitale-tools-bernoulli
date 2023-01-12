@@ -5,6 +5,8 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { Chart, registerables } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { ThemeProvider } from '@mui/material'
+import { theme } from './theme'
 
 Chart.register(...registerables)
 Chart.register(ChartDataLabels)
@@ -12,7 +14,9 @@ Chart.register(ChartDataLabels)
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
 )
 
