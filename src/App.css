@@ -11,6 +11,12 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #why-margin {
   margin-left: 0;
 }
