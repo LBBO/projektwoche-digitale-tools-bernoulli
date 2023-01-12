@@ -9,6 +9,7 @@
   display: grid;
   grid-template-areas: 'coin options';
   grid-template-columns: 1fr 1fr;
+  margin: 2em;
 }
 
 .options {
@@ -19,4 +20,20 @@
 
 #why-margin {
   margin-left: 0;
+}
+
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'coin' 'options';
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    margin: 0;
+    border-radius: 0;
+    height: 100%;
+    min-height: 100vh;
+  }
 }
