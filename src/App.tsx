@@ -1,30 +1,7 @@
-import React, { HTMLProps, useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import { CoinSide } from './Coin/Coin'
-
-const useNumberInput = (
-  defaultValue: number,
-  inputProps: HTMLProps<HTMLInputElement> = {},
-) => {
-  const [numberValue, setNumberValue] = useState(defaultValue)
-  const [value, setValue] = useState(numberValue.toString())
-  const component = (
-    <input
-      {...inputProps}
-      type={'number'}
-      value={value}
-      onChange={(e) => {
-        setValue(e.target.value)
-        const parsed = parseFloat(e.target.value)
-        console.log(e.target.value, parsed)
-        if (!Number.isNaN(parsed)) {
-          setNumberValue(parsed)
-        }
-      }}
-    />
-  )
-  return [numberValue, component]
-}
+import { useNumberInput } from './UseNumberInput'
 
 const initialCounts: Record<CoinSide, number> = {
   [CoinSide.Tails]: 0,
