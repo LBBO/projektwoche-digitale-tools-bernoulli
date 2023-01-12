@@ -14,7 +14,6 @@ export const useNumberInput = (
       onChange={(e) => {
         setValue(e.target.value)
         const parsed = parseFloat(e.target.value)
-        console.log(e.target.value, parsed)
         if (!Number.isNaN(parsed)) {
           setNumberValue(parsed)
         }

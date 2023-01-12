@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import './App.css'
 import { CoinSide } from './Coin/Coin'
 import { useNumberInput } from './UseNumberInput'
+import { Bar, Pie } from 'react-chartjs-2'
+import { ChartData } from 'chart.js'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 const initialCounts: Record<CoinSide, number> = {
   [CoinSide.Tails]: 0,
   [CoinSide.Heads]: 0,
+}
+
+const roundToDigit = (n: number, digits: number) => {
+  const asdf = 10 ** digits
+  return Math.round(n * asdf) / asdf
 }
 
 function App() {
@@ -29,13 +37,44 @@ function App() {
   const clearCounts = () => {
     setCounts({ ...initialCounts })
   }
+
+  const absoluteData = useMemo((): ChartData<'bar', number[], string> => {
+    return {
+      labels: ['Kopf', 'Zahl'],
+      datasets: [
+        {
+          data: [counts[CoinSide.Heads], counts[CoinSide.Tails]],
+          label: 'Münzwurf',
+        },
+      ],
+    }
+  }, [counts])
+
+  const totalCount = Math.max(
+    1,
+    counts[CoinSide.Heads] + counts[CoinSide.Tails],
+  )
+  const relativeData = useMemo((): ChartData<'pie', number[], string> => {
+    return {
+      labels: ['Kopf', 'Zahl'],
+      datasets: [
+        {
+          data: [
+            roundToDigit(counts[CoinSide.Heads] / totalCount, 3),
+            roundToDigit(counts[CoinSide.Tails] / totalCount, 3),
+          ],
+          label: 'Münzwurf',
+        },
+      ],
+    }
+  }, [counts, totalCount])
+
   return (
     <div className={'card'}>
       {/*<div className="coin-wrapper">*/}
       {/*  <Coin side={CoinSide.Heads} spinning={forceFair} />*/}
       {/*  <Coin side={CoinSide.Tails} spinning={forceFair} />*/}
       {/*</div>*/}
-      {JSON.stringify(counts)}
       <div className="options">
         <label>
           {probabilityInput}
@@ -56,6 +95,20 @@ function App() {
           <button onClick={spinTimesFactory(1000)}>1000x</button>
           <button onClick={clearCounts}>Reset</button>
         </div>
+      </div>
+      <div className="data">
+        <Bar
+          data={absoluteData}
+          options={{
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          }}
+          plugins={[ChartDataLabels]}
+        />
+        <Pie data={relativeData} plugins={[ChartDataLabels]} />
       </div>
     </div>
   )
