@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/projektwoche-digitale-tools-bernoulli/static/css/main.7dedba39.css",
+    "main.css": "/projektwoche-digitale-tools-bernoulli/static/css/main.ccb77fd3.css",
     "main.js": "/projektwoche-digitale-tools-bernoulli/static/js/main.fa24aa50.js",
     "static/js/787.08eb1c14.chunk.js": "/projektwoche-digitale-tools-bernoulli/static/js/787.08eb1c14.chunk.js",
     "index.html": "/projektwoche-digitale-tools-bernoulli/index.html",
-    "main.7dedba39.css.map": "/projektwoche-digitale-tools-bernoulli/static/css/main.7dedba39.css.map",
+    "main.ccb77fd3.css.map": "/projektwoche-digitale-tools-bernoulli/static/css/main.ccb77fd3.css.map",
     "main.fa24aa50.js.map": "/projektwoche-digitale-tools-bernoulli/static/js/main.fa24aa50.js.map",
     "787.08eb1c14.chunk.js.map": "/projektwoche-digitale-tools-bernoulli/static/js/787.08eb1c14.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7dedba39.css",
+    "static/css/main.ccb77fd3.css",
     "static/js/main.fa24aa50.js"
   ]
 }
